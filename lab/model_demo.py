@@ -36,12 +36,14 @@ def discover(client, save_model=False):
     return ids
 
 
-def chat(client, question, stream=False):
+def chat(client, question, stream=False, *, request_messages=None, report_name="model-report.json"):
     require_env("LLM_MODEL")
     started = time.monotonic()
     kwargs = {
         "model": os.environ["LLM_MODEL"],
-        "messages": messages(question, retrieve(question)),
+        "messages": request_messages
+        if request_messages is not None
+        else messages(question, retrieve(question)),
         "max_tokens": model_max_tokens(),
     }
     usage = None
@@ -87,8 +89,9 @@ def chat(client, question, stream=False):
         "usage": usage,
         "elapsed_seconds": round(time.monotonic() - started, 3),
     }
-    path = save_json("model-report.json", report)
-    print(f"실제 모델 응답 저장: {path}")
+    if report_name:
+        path = save_json(report_name, report)
+        print(f"실제 모델 응답 저장: {path}")
     if finish_reason == "length":
         print("응답이 토큰 한도에 도달했습니다. 완결된 응답인지 확인하세요.")
     return report
@@ -96,6 +99,10 @@ def chat(client, question, stream=False):
 
 def run(args):
     try:
+        if getattr(args, "command", None) == "chat":
+            from lab.chat_demo import run as run_chat
+
+            return run_chat(args)
         with model_client() as client:
             if args.step == "models":
                 return discover(client, args.save_model)

@@ -130,6 +130,27 @@ CPU와 GPU 학습은 선택지입니다. 둘 다 실행할 필요는 없습니�
 
 ## 5. 세 도구 연결
 
+### 일반 채팅
+
+Qwen과 자유롭게 대화하려면 다음 명령을 사용합니다. 최근 20턴의 대화를 기억하며,
+`/exit`로 종료하고 `/reset`으로 새 대화를 시작합니다.
+
+```powershell
+python -m lab chat --live --stream
+python -m lab chat --live --question "파이썬 리스트와 튜플의 차이는?"
+# 서비스 실행 및 인증 설정 후 대화 기록:
+python -m lab chat --live --stream --trace langfuse
+python -m lab chat --live --stream --trace langsmith
+python -m lab chat --live --stream --trace both
+```
+
+기본값은 로컬 기록만 사용합니다. `--trace`를 지정하면 질문·이전 대화·답변·토큰 사용량을
+선택한 서비스에 전송합니다. 자세한 사용법과 Tool Calling/LangGraph 설명은
+[일반 채팅 안내](docs/CHAT.md)를 참고하세요.
+기존 `model chat`은 장애 분석 예제로 유지됩니다.
+
+### 모델 서버 연결
+
 ktcloud GPU 서버의 Qwen을 연결하려면 [ktcloud 연결 가이드](docs/KTCLOUD.md)를 참고하세요.
 관찰 서비스 없이도 실제 모델 연결을 먼저 확인할 수 있습니다.
 

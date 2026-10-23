@@ -48,6 +48,16 @@ def main(argv=None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="버전, 실행 도구, 키 설정 여부만 확인")
     commands.add_parser("offline", help="외부 연결 없는 공통 파이프라인·평가 실습")
+    chat = commands.add_parser("chat", help="일반 채팅: 질문 한 번 또는 연속 대화")
+    chat.add_argument("--live", action="store_true", help="설정된 실제 모델 호출")
+    chat.add_argument("--question", help="생략하면 연속 대화; /exit 종료, /reset 새 대화")
+    chat.add_argument("--stream", action="store_true", help="대화 응답 스트리밍")
+    chat.add_argument(
+        "--trace",
+        choices=["none", "langsmith", "langfuse", "both"],
+        default="none",
+        help="질문·답변·사용량을 기록할 서비스 (기본: 로컬 파일만)",
+    )
     model = commands.add_parser("model", help="관찰 서비스 없이 실제 모델 서버 연결 확인")
     model.add_argument("step", choices=["models", "chat"])
     model.add_argument("--live", action="store_true", help="설정된 모델 서버 호출")
@@ -101,12 +111,12 @@ def main(argv=None) -> int:
             from lab.offline import run
 
             run()
-        elif args.command == "model":
+        elif args.command in {"model", "chat"}:
             if not args.live:
                 parser.error("모델 서버 호출에는 --live를 붙이세요.")
-            if args.save_model and args.step != "models":
+            if args.command == "model" and args.save_model and args.step != "models":
                 parser.error("--save-model은 models 명령에서만 사용합니다.")
-            if args.stream and args.step != "chat":
+            if args.command == "model" and args.stream and args.step != "chat":
                 parser.error("--stream은 chat 명령에서만 사용합니다.")
             from lab.model_demo import run
 
