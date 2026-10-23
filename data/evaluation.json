@@ -1,0 +1,7 @@
+[
+  {"id":"cpu","inputs":{"question":"CPU가 95%까지 올라갔어요. 무엇을 확인하나요?"},"outputs":{"keywords":["CPU","배포"],"reference":"KB-CPU"}},
+  {"id":"mem","inputs":{"question":"컨테이너에서 OOMKilled가 발생했습니다."},"outputs":{"keywords":["메모리","누수"],"reference":"KB-MEM"}},
+  {"id":"db","inputs":{"question":"DB connection timeout이 반복돼요."},"outputs":{"keywords":["연결 풀","쿼리"],"reference":"KB-DB"}},
+  {"id":"disk","inputs":{"question":"디스크 공간이 부족해요."},"outputs":{"keywords":["디스크","로그"],"reference":"KB-DISK"}},
+  {"id":"unknown","inputs":{"question":"이름 모르는 장비에 이상한 불빛이 보여요."},"outputs":{"keywords":["확인 필요","로그"],"reference":"검색 결과 없음"}}
+]

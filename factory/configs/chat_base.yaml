@@ -1,0 +1,4 @@
+# chat: chat_base
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+template: qwen
+trust_remote_code: false

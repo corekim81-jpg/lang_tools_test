@@ -1,0 +1,50 @@
+[
+  {
+    "instruction": "cpu 장애 원인과 조치를 설명하세요.",
+    "output": ""
+  },
+  {
+    "instruction": "cpu 관련 경고가 발생했습니다. 점검 방법은?",
+    "output": ""
+  },
+  {
+    "instruction": "cpu 문제 대응 보고서를 작성해 주세요.",
+    "output": ""
+  },
+  {
+    "instruction": "oom 장애 원인과 조치를 설명하세요.",
+    "output": ""
+  },
+  {
+    "instruction": "oom 관련 경고가 발생했습니다. 점검 방법은?",
+    "output": ""
+  },
+  {
+    "instruction": "oom 문제 대응 보고서를 작성해 주세요.",
+    "output": ""
+  },
+  {
+    "instruction": "db 장애 원인과 조치를 설명하세요.",
+    "output": ""
+  },
+  {
+    "instruction": "db 관련 경고가 발생했습니다. 점검 방법은?",
+    "output": ""
+  },
+  {
+    "instruction": "db 문제 대응 보고서를 작성해 주세요.",
+    "output": ""
+  },
+  {
+    "instruction": "disk 장애 원인과 조치를 설명하세요.",
+    "output": ""
+  },
+  {
+    "instruction": "disk 관련 경고가 발생했습니다. 점검 방법은?",
+    "output": ""
+  },
+  {
+    "instruction": "disk 문제 대응 보고서를 작성해 주세요.",
+    "output": ""
+  }
+]

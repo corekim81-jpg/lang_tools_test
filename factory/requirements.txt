@@ -1,0 +1,7 @@
+# Install in a SEPARATE Python 3.11/3.12 environment, preferably Linux/WSL2.
+# Install the correct PyTorch CPU/CUDA build for your machine first.
+llamafactory==0.9.5
+python-dotenv==1.2.4
+PyYAML==6.0.3
+tensorboard>=2.18,<3
+# Optional recipes: bitsandbytes, galore-torch, deepspeed, vllm.

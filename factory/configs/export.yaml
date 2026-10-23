@@ -1,0 +1,9 @@
+# export: export
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+template: qwen
+trust_remote_code: false
+adapter_name_or_path: saves/sft_lora
+export_dir: saves/merged
+export_size: 2
+export_device: cpu
+export_legacy_format: false

@@ -1,0 +1,5 @@
+# api: api_vllm
+model_name_or_path: saves/merged
+template: qwen
+trust_remote_code: false
+infer_backend: vllm

@@ -1,0 +1,42 @@
+{
+  "incident_train": {
+    "file_name": "train.json"
+  },
+  "incident_eval": {
+    "file_name": "eval.json"
+  },
+  "incident_text": {
+    "file_name": "text.json",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "incident_prompts": {
+    "file_name": "prompts.json"
+  },
+  "incident_pairs": {
+    "file_name": "pairs.json",
+    "ranking": true,
+    "columns": {
+      "prompt": "instruction",
+      "chosen": "chosen",
+      "rejected": "rejected"
+    }
+  },
+  "incident_kto": {
+    "file_name": "kto.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "kto_tag": "kto_tag"
+    }
+  },
+  "incident_images": {
+    "file_name": "images.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "images": "images"
+    }
+  }
+}

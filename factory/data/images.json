@@ -1,0 +1,62 @@
+[
+  {
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>상태 패널의 두 색을 설명하세요."
+      },
+      {
+        "from": "gpt",
+        "value": "왼쪽은 빨간색, 오른쪽은 초록색입니다."
+      }
+    ],
+    "images": [
+      "status.png"
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>상태 패널의 두 색을 설명하세요."
+      },
+      {
+        "from": "gpt",
+        "value": "왼쪽은 빨간색, 오른쪽은 초록색입니다."
+      }
+    ],
+    "images": [
+      "status.png"
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>상태 패널의 두 색을 설명하세요."
+      },
+      {
+        "from": "gpt",
+        "value": "왼쪽은 빨간색, 오른쪽은 초록색입니다."
+      }
+    ],
+    "images": [
+      "status.png"
+    ]
+  },
+  {
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>상태 패널의 두 색을 설명하세요."
+      },
+      {
+        "from": "gpt",
+        "value": "왼쪽은 빨간색, 오른쪽은 초록색입니다."
+      }
+    ],
+    "images": [
+      "status.png"
+    ]
+  }
+]
