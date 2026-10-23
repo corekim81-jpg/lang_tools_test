@@ -130,6 +130,14 @@ CPU와 GPU 학습은 선택지입니다. 둘 다 실행할 필요는 없습니�
 
 ## 5. 세 도구 연결
 
+ktcloud GPU 서버의 Qwen을 연결하려면 [ktcloud 연결 가이드](docs/KTCLOUD.md)를 참고하세요.
+관찰 서비스 없이도 실제 모델 연결을 먼저 확인할 수 있습니다.
+
+```powershell
+python -m lab model models --live --save-model
+python -m lab model chat --live
+```
+
 LLaMA-Factory의 `api` 또는 `api_base`를 별도 터미널에서 실행한 뒤,
 관찰 도구용 `.venv`의 `.env`에 다음을 설정합니다.
 

@@ -48,6 +48,12 @@ def main(argv=None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="버전, 실행 도구, 키 설정 여부만 확인")
     commands.add_parser("offline", help="외부 연결 없는 공통 파이프라인·평가 실습")
+    model = commands.add_parser("model", help="관찰 서비스 없이 실제 모델 서버 연결 확인")
+    model.add_argument("step", choices=["models", "chat"])
+    model.add_argument("--live", action="store_true", help="설정된 모델 서버 호출")
+    model.add_argument("--save-model", action="store_true", help="단일 모델 ID를 .env에 저장")
+    model.add_argument("--stream", action="store_true", help="대화 응답 스트리밍")
+    model.add_argument("--question", default="CPU가 95%까지 올라갔어요. 무엇을 확인하나요?")
     for tool, steps in {
         "langsmith": [
             "trace",
@@ -95,6 +101,16 @@ def main(argv=None) -> int:
             from lab.offline import run
 
             run()
+        elif args.command == "model":
+            if not args.live:
+                parser.error("모델 서버 호출에는 --live를 붙이세요.")
+            if args.save_model and args.step != "models":
+                parser.error("--save-model은 models 명령에서만 사용합니다.")
+            if args.stream and args.step != "chat":
+                parser.error("--stream은 chat 명령에서만 사용합니다.")
+            from lab.model_demo import run
+
+            run(args)
         elif args.command == "factory":
             from lab.factory import dispatch
 

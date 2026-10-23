@@ -7,12 +7,15 @@
 | 검사 | 결과 |
 |---|---|
 | 로컬 offline 실습 | baseline/good 평가 보고서 생성 |
-| pytest | **23 passed** |
+| pytest | **32 passed** |
 | Ruff | All checks passed |
 | LLaMA-Factory 데이터 형식·설정 정적 검사 | **7개 데이터셋 / 33개 YAML 통과** |
 | Docker Compose config --quiet | 통과; 서버 시작 없이 구문·변수 해석 검사 |
 | uv sync --frozen --offline | 고정 버전 설치 상태 확인 |
 | factory run 미리보기 | 학습 실행 없이 명령·선행 결과 경로 출력 확인 |
+| ktcloud Qwen 실제 API | SSH 터널 → vLLM 8000, 모델 목록 및 `qwen3.8-27b` 응답 확인 |
+| 실제 Qwen 스트리밍·공통 파이프라인 | 한국어 장애 분석 응답과 실제 토큰 usage 확인 |
+| SSH 터널 스크립트 | 전용 터널 종료·백그라운드 재시작 후 모델 목록 조회 성공 |
 
 테스트는 다음을 검증합니다.
 
@@ -26,6 +29,8 @@
 - 평가 함수 형식, JSON 평가자의 잘못된 응답 거부.
 - 학습/검증 질문 분리, 선호 데이터 형식, PNG 구조.
 - 설정 생성 시 사용자 수정 보존, 실행 전 선행 결과 누락 처리.
+- 모델 목록 저장 시 다른 설정 보존, 여러 모델에서 자동 선택 거부.
+- 브라우저 인증 오류 안내, 빈 답변·토큰 한도 초과 처리, 토큰 예산 전달.
 
 LangSmith 패키지 내부에서 deprecation warning 2개가 발생했습니다.
 테스트 실패는 없으며 해당 패키지의 향후 업그레이드 시 다시 확인할 항목입니다.
@@ -36,7 +41,6 @@ LangSmith 패키지 내부에서 deprecation warning 2개가 발생했습니다.
 |---|---|
 | LangSmith 실제 클라우드 수집·프롬프트·실험·큐 생성 | LANGSMITH_API_KEY 미설정; 계정 키 설정 후 `langsmith all --live` |
 | Langfuse 실제 서버 수집·웹 화면 | Docker Desktop Linux 엔진 꺼짐; 엔진 시작 후 Compose up 및 `langfuse all --live` |
-| 외부/로컬 실제 모델 호출 | 실제 모델 서버를 시작하지 않음; mock HTTP로 SDK 계약만 검사 |
 | LLaMA-Factory 학습/다운로드/병합/추론 | 별도 학습 환경 미설치, nvidia-smi 없음; factory/README.md 참조 |
 | 분산·양자화·멀티모달 학습 | 해당 하드웨어/선택 의존성 필요 |
 | UI·기업용·관리자 기능 | 실제 프로젝트·관리자 권한·요금제별 확인 필요 |

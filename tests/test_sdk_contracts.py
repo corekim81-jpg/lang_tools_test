@@ -119,7 +119,7 @@ def test_judge_rejects_non_json(monkeypatch):
     mock = MagicMock()
     mock.__enter__.return_value = mock
     mock.chat.completions.create.return_value = SimpleNamespace(
-        choices=[SimpleNamespace(message=SimpleNamespace(content="not JSON"))]
+        choices=[SimpleNamespace(message=SimpleNamespace(content="not JSON"), finish_reason="stop")]
     )
     monkeypatch.setattr(common, "model_client", lambda: mock)
     monkeypatch.setenv("LLM_MODEL", "test-model")

@@ -18,6 +18,7 @@ from lab.common import (
     judge,
     messages,
     model_client,
+    model_max_tokens,
     prefix,
     require_env,
     retrieve,
@@ -238,7 +239,7 @@ def integrations(client, mode):
                 messages=messages(question, docs),
                 stream=True,
                 stream_options={"include_usage": True},
-                max_tokens=256,
+                max_tokens=model_max_tokens(),
             ) as stream:
                 for chunk in stream:
                     if chunk.choices:
